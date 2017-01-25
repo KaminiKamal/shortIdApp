@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <head>
     <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Type the full url</h1>
-    <input type="text" id="oldurl"/>
-    <button type="button" id="btn">OK</button>
-  <div id="newid"></div><html>
+
+ 
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     <h4>Type the full url</h4>
+     <input type="text" class="form-control"  id="oldurl" style="width:80%"/>
+     <div style="float:right;margin-top:-35px">
+    <button type="button" class="btn btn-primary" id="btn" style="width:200px">OK</button></div></div>
+    <div class="panel-body" id="newid"></div>
+  </div>
+
+
+    
+    
+    
+  <div ></div><html>
 <script>
 $(document).ready(function() {
     $('#btn').click(function () {

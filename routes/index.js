@@ -3,16 +3,18 @@ var IdGen = require('../models/ShortURL');
 var router = express.Router();
 var shortid = require('short-id');
 /* GET home page. *
-var authenticate = function (req, res, next){
-if (){
-  res.send("please enter valid url");
-}
-  else{ 
-    next();
-}
-}
 */
-
+var authenticate = function(req, res, next) {
+     var str=req.body.originalurl;
+    var n = str.search(/http|https|localhost|www/);
+    if(n==0){
+      next();
+    }
+    else{
+      return res.send("Please enter valid url");
+    }
+    //document.getElementById("demo").innerHTML = n;
+}
 
 
 router.get('/', function(req, res, next) {
@@ -37,12 +39,10 @@ router.get('/page1', function (req, res) {
 
 
 
-router.post('/form',function (req, res) {
+ router.post('/form', authenticate, function (req, res) {
            var url = req.body.originalurl;
            console.log(url);
            var q = shortid.generate();
-           //var r = shortid.fetch(q);
-           //console.log("fetching: " + r);
            var newid = shortid.generate();
 
            var info = {oldurl :url, shorturl: newid};
@@ -73,11 +73,14 @@ IdGen.findOne({'shorturl': a},function(err,val){
   }
   else{
  //res.send("hui");
- console.log(val.oldurl);
- var c = val.oldurl;
+ console.log("old url :"+val.old);
+        //var c = val.oldurl;
+       // res.redirect(c);
+            //res.send("hi");
  //res.redirect();
  res.redirect(c);
 }
+
 });
 });
 
