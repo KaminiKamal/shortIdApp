@@ -9,9 +9,7 @@
     <h1>Type the full url</h1>
     <input type="text" id="oldurl"/>
     <button type="button" id="btn">OK</button>
-  
-  </body>
-</html>
+  <div id="newid"></div><html>
 <script>
 $(document).ready(function() {
     $('#btn').click(function () {
@@ -27,7 +25,8 @@ $(document).ready(function() {
         //dataType: 'json',  // multiple data sent using ajax
         success: function (result) {
            alert(result);
-
+          var out = result;
+                $("#newid").html(out);
            //window.location = '/display';
         }
         });

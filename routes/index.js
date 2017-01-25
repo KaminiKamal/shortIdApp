@@ -2,13 +2,25 @@ var express = require('express');
 var IdGen = require('../models/ShortURL');
 var router = express.Router();
 var shortid = require('short-id');
-/* GET home page. */
+/* GET home page. *
+var authenticate = function (req, res, next){
+if (){
+  res.send("please enter valid url");
+}
+  else{ 
+    next();
+}
+}
+*/
+
+
+
 router.get('/', function(req, res, next) {
    
   res.render('index');
 });
 
-router.get('/page1',function (req, res) {
+router.get('/page1', function (req, res) {
   IdGen.find().exec(function (error,data) {
   if (error) {
     console.log("error");
@@ -16,7 +28,7 @@ router.get('/page1',function (req, res) {
   }
     else{
     console.log(data);
-     return res.render('page1',{data : data});
+     return res.render('page1', {data : data});
     }
   });
 //res.send("hi");
@@ -44,7 +56,7 @@ router.post('/form',function (req, res) {
            	else{
                console.log(data);
               console.log("data sent");
-           	res.send("done");
+           	res.send(q);
             }
            });
            console.log(newid);
