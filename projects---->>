@@ -1,0 +1,31 @@
+projects---->>
+1.indented-->2 spaces(using tab)
+ex: if(hfrj){
+	
+    }//same level 
+
+2.space before & after arithmetic and logic operator
+ex: var i == 2;
+
+3. space after comma, never before
+
+4.space after keywords
+ex: var x = function ()
+but not at the time of invoking-- x();
+
+if ()
+
+5. if (), if (a==2) , if( (a==2)&&(b==3) )
+
+PROJECT
+-----------------------------------------
+1. quiz app (other group)//validation on the server size 
+{
+question: "jernlre",
+option : ["ntl","l4j","b4jbt"],
+correct: "jktnkrt"
+}
+
+2.  
+
+

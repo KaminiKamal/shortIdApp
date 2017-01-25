@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>List of urls generated</h1>
+    
+   <table>
+<% for(var i=0; i < data.length; i++) { 
+     
+  %>
+   <tr>
+     <td><%= data[i].oldurl %></td>
+     <td style="color:blue" id="form-id">
+                localhost:3000/<%= data[i].shorturl %>
+          </td>
+   </tr>
+<% }  %>
+</table>
+  
+  </body>
+</html>
+<script>
+$(document).ready(function() {
+    $('#btn').click(function () {
+
+      var  url=$("#originalUrl").val();
+      console.log(url);
+      
+      var data={
+      	'originalUrl' : url,
+      	
+      };
+      console.log(data);
+      	$.ajax({
+        type:"POST",
+        url:"/form",
+        data :  data, 
+        //dataType: 'json',  // multiple data sent using ajax
+        success: function (result) {
+           alert(result);
+
+           //window.location = '/display';
+        }
+      });
+      });
+    //redirecting to url
+    
+
+    //console.log(a);
+    /*
+    alert(a);
+    $.ajax({
+      type : "GET",
+      url : "/send",
+      data : a,
+      success : function(result){
+        alert(result);
+      }
+    });
+    console.log()
+   });
+});
+*/
+</script>
