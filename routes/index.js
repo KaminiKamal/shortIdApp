@@ -37,6 +37,21 @@ router.get('/page1', function (req, res) {
   //res.render('page1',{title:'list of shortIDs'});
 });
 
+router.get('/:myurl',function(req, res){
+ var a = req.params.myurl;
+var search = IdGen.findOne({'shorturl': a});
+  search.exec(function (err, docs) {
+    if(err) return res.send('err0r');
+    if (docs == null){
+        return res.send('null');
+    }else{
+    //res.send(docs);
+
+    res.redirect(docs.oldurl);
+    }
+  });
+ 
+});
 
 
  router.post('/form', authenticate, function (req, res) {
@@ -62,26 +77,18 @@ router.get('/page1', function (req, res) {
            console.log(newid);
            //res.redirect('/page1');
 });
-router.get('/:myurl',function(req, res){
- var a = req.params.myurl;
- console.log(a);
+
+
  
-IdGen.findOne({'shorturl': a},function(err,val){
-  if(err) { 
-    console.log(err);
-    //next();
-  }
-  else{
- //res.send("hui");
- console.log("old url :"+val.old);
-        //var c = val.oldurl;
-       // res.redirect(c);
-            //res.send("hi");
- //res.redirect();
- res.redirect(c);
-}
 
-});
-});
 
+
+/*
+router.get('/:myurl', function(req, res){
+  var a = req.params.myurl;
+  console.log("the received url: "+a);
+  IdGen.find().exec();
+  res.send("hi");
+});
+*/
 module.exports = router;

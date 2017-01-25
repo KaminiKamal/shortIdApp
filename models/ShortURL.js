@@ -1,9 +1,9 @@
 "use strict";
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var UrlSchema = mongoose.Schema({
+	oldurl : String,
+	shorturl   : String
+})
 
-   module.exports = mongoose.model('ShortURL',
-  {     
-        oldurl : String,
-        shorturl   : String
-  });
+
+   module.exports = mongoose.model('ShortURL', UrlSchema);
