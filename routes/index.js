@@ -16,51 +16,32 @@ var authenticate = function(req, res, next) {
     //document.getElementById("demo").innerHTML = n;
 }
 
-
+router.get('/index',function(req, res){
+  res.render('index1',{title : 'Welcome to express'});
+});
 router.get('/', function(req, res, next) {
    
   res.render('index');
 });
 
-router.get('/page1', function (req, res) {
-  IdGen.find().exec(function (error,data) {
-  if (error) {
-    console.log("error");
-    res.send("error")
-  }
-    else{
-    console.log(data);
-     return res.render('page1', {data : data});
-    }
-  });
-//res.send("hi");
-  //res.render('page1',{title:'list of shortIDs'});
-});
 
 router.get('/:myurl',function(req, res){
  var a = req.params.myurl;
-var search = IdGen.findOne({'shorturl': a});
-  search.exec(function (err, docs) {
-    if(err) return res.send('err0r');
-    if (docs == null){
-        return res.send('null');
-    }else{
-    //res.send(docs);
-
-    res.redirect(docs.oldurl);
-    }
-  });
+       res.send("Sorry!!! the page is not available");
+    window.location.assign(a);
+      
  
 });
 
 
- router.post('/form', authenticate, function (req, res) {
+
+router.post('/form', authenticate, function (req, res) {
            var url = req.body.originalurl;
            console.log(url);
            var q = shortid.generate();
-           var newid = shortid.generate();
+           //var newid = shortid.generate();
 
-           var info = {oldurl :url, shorturl: newid};
+           var info = {oldurl :url, shorturl: q};
            console.log(info);
            //console.log(shortid.generate());
            var query = IdGen(info);
@@ -71,24 +52,17 @@ var search = IdGen.findOne({'shorturl': a});
            	else{
                console.log(data);
               console.log("data sent");
-           	res.send(q);
+           	res.send(data);
             }
            });
-           console.log(newid);
+           console.log(q);
            //res.redirect('/page1');
 });
 
-
+router.get('/index', function (req, res){
+  var a ="localhost:3000/index";
+  res.render('index',a);
+});
  
 
-
-
-/*
-router.get('/:myurl', function(req, res){
-  var a = req.params.myurl;
-  console.log("the received url: "+a);
-  IdGen.find().exec();
-  res.send("hi");
-});
-*/
 module.exports = router;

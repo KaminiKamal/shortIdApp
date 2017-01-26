@@ -1,8 +1,9 @@
 "use strict";
 var mongoose = require('mongoose');
 var UrlSchema = mongoose.Schema({
-	oldurl : String,
-	shorturl   : String
+	oldurl :  String,
+	shorturl   :  String
+	
 })
 
 

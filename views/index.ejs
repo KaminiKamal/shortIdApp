@@ -39,9 +39,10 @@ $(document).ready(function() {
         data :  data, 
         //dataType: 'json',  // multiple data sent using ajax
         success: function (result) {
-           alert(result);
-          var out = result;
-                $("#newid").html(out);
+           alert(result.oldurl);
+          var out = result.oldurl;
+          var c = result.shorturl;
+                $("#newid").html('<a href="http://'+out+'">'+c+'</a>');
            //window.location = '/display';
         }
         });
