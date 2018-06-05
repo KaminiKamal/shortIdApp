@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('shortidproject:server');
+var app = require('../server');
+var debug = require('debug')('express-skeleton:server');
 var http = require('http');
 
 /**
